@@ -6,6 +6,9 @@ const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
 const passport = require('passport');
 
+const users = require('./routes/api/v1/users');
+const events = require('./routes/api/v1/events');
+
 //passport config
 // require('./config/passport')(passport);
 
@@ -36,6 +39,10 @@ app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 //passport middleware
 // app.use(passport.initialize());
+
+//user route
+app.use('/api/users', users);
+app.use('/api/events', events);
 
 /********************DB config*********************/
 const db = require('./config/dbConfig').mongoURI;
