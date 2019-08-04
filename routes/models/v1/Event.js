@@ -14,15 +14,19 @@ const EventSchema = new Schema(
       required: true
     },
 
-    address: {
-      type: String,
-      required: true
-    },
+    address: [
+      {
+        name: {
+          type: String,
+          required: true
+        },
 
-    zipcode: {
-      type: String,
-      required: true
-    },
+        zipcode: {
+          type: Number,
+          required: true
+        }
+      }
+    ],
 
     hostedBy: {
       type: String,
