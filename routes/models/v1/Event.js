@@ -28,20 +28,38 @@ const EventSchema = new Schema(
       }
     ],
 
-    hostedBy: {
-      type: String,
-      required: true
-    },
+    hostedBy: [
+      {
+        name: {
+          type: String,
+          required: true
+        },
+        contact: [
+          {
+            phone: {
+              type: String
+            },
+            email: {
+              type: String
+            }
+          }
+        ]
+      }
+    ],
 
-    startsAt: {
-      type: Date,
-      required: true
-    },
+    time: [
+      {
+        startsAt: {
+          type: Date,
+          required: true
+        },
 
-    endsAt: {
-      type: Date,
-      required: true
-    },
+        endsAt: {
+          type: Date,
+          required: true
+        }
+      }
+    ],
 
     photo: {
       data: Buffer,
