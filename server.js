@@ -7,7 +7,7 @@ const bodyparser = require('body-parser');
 const passport = require('passport');
 
 //passport config
-require('./config/passport')(passport);
+// require('./config/passport')(passport);
 
 /*********************SET UPS*************************/
 const app = express();
@@ -35,10 +35,10 @@ app.use(
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 //passport middleware
-app.use(passport.initialize());
+// app.use(passport.initialize());
 
 /********************DB config*********************/
-const db = require('./config/keys').mongoURI;
+const db = require('./config/dbConfig').mongoURI;
 //connect to mongo
 mongoose
   .connect(db, { useNewUrlParser: true })
