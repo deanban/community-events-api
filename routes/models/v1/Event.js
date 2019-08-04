@@ -19,6 +19,11 @@ const EventSchema = new Schema(
       required: true
     },
 
+    zipcode: {
+      type: String,
+      required: true
+    },
+
     hostedBy: {
       type: String,
       required: true
