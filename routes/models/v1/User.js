@@ -4,11 +4,6 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema(
   {
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: 'users'
-    },
-
     name: {
       type: String,
       required: true
@@ -26,7 +21,7 @@ const UserSchema = new Schema(
 
     placeOfWork: [
       {
-        name: {
+        place: {
           type: String,
           required: true
         },
