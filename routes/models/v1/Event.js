@@ -39,16 +39,14 @@ const EventSchema = new Schema(
           type: String,
           required: true
         },
-        contact: [
-          {
-            phone: {
-              type: String
-            },
-            email: {
-              type: String
-            }
-          }
-        ]
+
+        phone: {
+          type: String
+        },
+
+        email: {
+          type: String
+        }
       }
     ],
 
