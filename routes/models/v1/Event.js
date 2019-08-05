@@ -26,7 +26,7 @@ const EventSchema = new Schema(
         },
 
         zipcode: {
-          type: Number
+          type: String
         }
       }
     ],

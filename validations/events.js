@@ -24,6 +24,7 @@ function validateEvent(data) {
 
 function validateAddress(data) {
   let addrErrors = {};
+  console.log('valid addr:', data.zipcode);
   data.street = !isEmpty(data.street) ? data.street : '';
   data.zipcode = !isEmpty(data.zipcode) ? data.zipcode : '';
 
@@ -33,12 +34,17 @@ function validateAddress(data) {
   if (validator.isEmpty(data.street)) {
     addrErrors.street = 'Address Required';
   }
-  if (!validator.isPostalCode(data.zipcode)) {
-    addrErrors.zipcode = 'Invalid Zipcode';
-  }
+
   if (validator.isEmpty(data.zipcode)) {
     addrErrors.zipcode = 'Zipcode Required';
   }
+  // console.log(validator.isPostalCode(data.zipcode, 'US'));
+
+  // if (!validator.isPostalCode(data.zipcode, 'US')) {
+  //   addrErrors.zipcode = 'Invalid Zipcode';
+  // }
+
+  // console.log(addrErrors);
 
   return {
     addrErrors,
