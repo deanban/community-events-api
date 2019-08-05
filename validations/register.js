@@ -1,7 +1,7 @@
 const Validator = require('validator');
 const isEmpty = require('./isEmpty');
 
-const validateUser = data => {
+function validateUser(data) {
   let errors = {};
 
   data.name = !isEmpty(data.name) ? data.name : '';
@@ -45,24 +45,29 @@ const validateUser = data => {
     errors,
     isValid: isEmpty(errors)
   };
-};
+}
 
-const validateWork = data => {
-  let errors = {};
+function validateWork(data) {
+  let workErrors = {};
 
   data.place = !isEmpty(data.place) ? data.place : '';
   data.address = !isEmpty(data.address) ? data.address : '';
   data.phone = !isEmpty(data.phone) ? data.phone : '';
 
-  if (validator.isEmpty(data.place)) {
-    errors.place = 'Name of your workplace is required.';
+  if (Validator.isEmpty(data.place)) {
+    workErrors.place = 'Name of your workplace is required.';
   }
-  if (validator.isEmpty(data.address)) {
-    errors.address = 'Address of your workplace is required.';
+  if (Validator.isEmpty(data.address)) {
+    workErrors.address = 'Address of your workplace is required.';
   }
-  if (validator.isEmpty(data.phone)) {
-    errors.phone = 'Workphone is required.';
+  if (Validator.isEmpty(data.phone)) {
+    workErrors.phone = 'Workphone is required.';
   }
-};
+
+  return {
+    workErrors,
+    isEmpty: isEmpty(workErrors)
+  };
+}
 
 module.exports = { validateUser, validateWork };
