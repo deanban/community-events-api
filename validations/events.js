@@ -1,7 +1,7 @@
 const validator = require('validator');
 const isEmpty = require('./isEmpty');
 
-function validateEvents(data) {
+function validateEvent(data) {
   let eventErrors = {};
   data.name = !isEmpty(data.name) ? data.name : '';
   data.desc = !isEmpty(data.desc) ? data.desc : '';
@@ -24,14 +24,14 @@ function validateEvents(data) {
 
 function validateAddress(data) {
   let addrErrors = {};
-  data.name = !isEmpty(data.name) ? data.name : '';
+  data.street = !isEmpty(data.street) ? data.street : '';
   data.zipcode = !isEmpty(data.zipcode) ? data.zipcode : '';
 
-  if (!validator.isLength(data.name, { min: 2, max: 40 })) {
-    addrErrors.name = 'Address Must Be Atleast 5 Characters';
+  if (!validator.isLength(data.street, { min: 2, max: 40 })) {
+    addrErrors.street = 'Address Must Be Atleast 5 Characters';
   }
-  if (validator.isEmpty(data.name)) {
-    addrErrors.name = 'Address Required';
+  if (validator.isEmpty(data.street)) {
+    addrErrors.street = 'Address Required';
   }
   if (!validator.isPostalCode(data.zipcode)) {
     addrErrors.zipcode = 'Invalid Zipcode';
@@ -48,13 +48,19 @@ function validateAddress(data) {
 
 function validateHost(data) {
   let hostErrors = {};
-  data.name = !isEmpty(data.name) ? data.name : '';
+  data.hostname = !isEmpty(data.hostname) ? data.hostname : '';
 
-  if (!validator.isLength(data.name, { min: 2, max: 40 })) {
-    hostErrors.name = 'Host Name Must Be Atleast 3 Characters';
+  if (!validator.isLength(data.hostname, { min: 2, max: 40 })) {
+    hostErrors.hostname = 'Host Name Must Be Atleast 3 Characters';
   }
-  if (validator.isEmpty(data.name)) {
-    hostErrors.name = 'Host Name Required';
+  if (validator.isEmpty(data.hostname)) {
+    hostErrors.hostname = 'Host Name Required';
+  }
+  if (validator.isMobilePhone(data.phone)) {
+    hostErrors.phone = 'Invalid Phone';
+  }
+  if (validator.isEmail(data.email)) {
+    hostErrors.email = 'Invalid Email';
   }
 
   return {
@@ -78,7 +84,7 @@ function validateTime(data) {
 }
 
 module.exports = {
-  validateEvents,
+  validateEvent,
   validateAddress,
   validateHost,
   validateTime

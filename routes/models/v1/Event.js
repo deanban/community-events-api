@@ -21,23 +21,20 @@ const EventSchema = new Schema(
 
     address: [
       {
-        name: {
-          type: String,
-          required: true
+        street: {
+          type: String
         },
 
         zipcode: {
-          type: Number,
-          required: true
+          type: Number
         }
       }
     ],
 
     hostedBy: [
       {
-        name: {
-          type: String,
-          required: true
+        hostname: {
+          type: String
         },
 
         phone: {
@@ -53,21 +50,14 @@ const EventSchema = new Schema(
     time: [
       {
         startsAt: {
-          type: Date,
-          required: true
+          type: Date
         },
 
         endsAt: {
-          type: Date,
-          required: true
+          type: Date
         }
       }
-    ],
-
-    photo: {
-      data: Buffer,
-      type: String
-    }
+    ]
   },
   {
     timestamps: true
