@@ -4,6 +4,7 @@ const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
+const formidable = require('express-formidable');
 const passport = require('passport');
 
 const users = require('./routes/api/v1/users');
@@ -37,6 +38,7 @@ app.use(
 
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
+app.use(formidable());
 //passport middleware
 // app.use(passport.initialize());
 

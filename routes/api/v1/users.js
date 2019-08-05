@@ -20,7 +20,7 @@ router.get('/test', (req, res, next) =>
 //@dsc register users route
 //@access public
 router.post('/signup', (req, res, next) => {
-  const { name, email, password, place, address, phone, photo } = req.body;
+  const { name, email, password, place, address, phone } = req.body;
 
   const { errors, isValid } = validate.validateUser(req.body);
   const { workErrors, isEmpty } = validate.validateWork(req.body);
@@ -40,12 +40,11 @@ router.post('/signup', (req, res, next) => {
           password,
           placeOfWork: [
             {
-              place,
+              place: capitalize(place),
               address,
               phone
             }
-          ],
-          photo
+          ]
         });
 
         bcrypt.genSalt(10, (err, salt) => {

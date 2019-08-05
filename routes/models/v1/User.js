@@ -36,12 +36,7 @@ const UserSchema = new Schema(
           required: true
         }
       }
-    ],
-
-    photo: {
-      data: Buffer,
-      type: String
-    }
+    ]
   },
   { timestamps: true }
 );
