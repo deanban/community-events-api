@@ -11,7 +11,7 @@ const users = require('./routes/api/v1/users');
 const events = require('./routes/api/v1/events');
 
 //passport config
-// require('./config/passport')(passport);
+require('./config/passport')(passport);
 
 /*********************SET UPS*************************/
 const app = express();
@@ -39,8 +39,9 @@ app.use(
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 // app.use(formidable());
+
 //passport middleware
-// app.use(passport.initialize());
+app.use(passport.initialize());
 
 //user route
 app.use('/api/users', users);
